@@ -6,7 +6,7 @@
   <meta name="description" content="Aaron Dodson, UX Design Manager at Experian. Selected work in product and web design.">
   <title>Aaron Dodson — Design Leadership</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=League+Gothic&amp;display=swap">
-  <link rel="stylesheet" href="styles.css?v=06e2cdb">
+  <link rel="stylesheet" href="styles.css?v=2005306464">
 </head>
 <body id="top">
   <div class="page">
@@ -32,7 +32,6 @@
           </h1>
           <div class="hero-actions">
             <a class="text-link" href="#work">View selected work <span aria-hidden="true">↓</span></a>
-            <button class="motion-toggle" type="button" hidden>Pause animation</button>
           </div>
         </section>
       </div>
@@ -40,7 +39,7 @@
         <h2 class="section-label" id="work-title">Selected work <svg class="label-accent" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M8 1v14M2 4.5l12 7M2 11.5l12-7"/></svg></h2>
         <div class="projects">
           <a class="project project--illustrated" href="work.html#experian-insurance-hub">
-            <h3>Experian Insurance Hub</h3>
+            <h3>Experian Product Design Strategy</h3>
             <p class="project-meta">Product design · Insurance</p>
             <svg class="project-icon" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path d="m48 5 37 21v44L48 91 11 70V26L48 5Z"/>
@@ -48,7 +47,7 @@
             </svg>
           </a>
           <a class="project project--illustrated" href="work.html#marketing-webflow">
-            <h3>Marketing &amp; Webflow</h3>
+            <h3>Marketing and Branding</h3>
             <p class="project-meta">Web design · Conversion</p>
             <svg class="project-icon" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="2.8" aria-hidden="true" focusable="false">
               <g transform="rotate(-19 120 120)">
@@ -60,13 +59,27 @@
               </g>
             </svg>
           </a>
+          <a class="project project--illustrated" href="https://galleries.vsco.co/gallery/6afde7de075f6311b479cd93">
+            <h3>My Film<br>Photography</h3>
+            <p class="project-meta">Personal work</p>
+            <svg class="project-icon" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="10" y="20" width="76" height="56" rx="4"/>
+              <path d="M10 32h76M10 64h76M22 26h4m12 0h4m12 0h4m12 0h4M22 70h4m12 0h4m12 0h4m12 0h4M24 63l15-17 11 12 10-11 14 16"/>
+              <circle cx="64" cy="40" r="3"/>
+            </svg>
+          </a>
         </div>
       </section>
       <section class="section-row" id="about" aria-labelledby="about-title">
         <h2 class="section-label" id="about-title">About <svg class="label-accent" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M8 1v14M2 4.5l12 7M2 11.5l12-7"/></svg></h2>
         <div class="about-summary">
           <p class="about-copy">I started in graphic design and moved into digital product design. Today, I lead UX design at Experian, where I work on experiences that help people make complicated decisions.</p>
-          <a class="text-link" href="about.html">More about me <span aria-hidden="true">→</span></a>
+          <a class="text-button" href="about.html">
+            More about me
+            <svg viewBox="0 0 104 80" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M5 40h94M61 5c0 19 17 35 38 35-21 0-38 16-38 35"/>
+            </svg>
+          </a>
         </div>
       </section>
     </main>
@@ -84,7 +97,6 @@
     const lines = Array.from(headline.querySelectorAll(".hero-line"));
     const words = headline.querySelectorAll(".hero-swap-word");
     const face = headline.querySelector(".hero-face");
-    const toggle = document.querySelector(".motion-toggle");
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
     const originalWords = Array.from(words, word => word.textContent);
     let showingGood = false;
@@ -176,7 +188,6 @@
             finishHeadline(good);
           } catch {
             playing = false;
-            toggle.hidden = true;
             setHeadline(true);
           } finally {
             transitioning = false;
@@ -185,22 +196,13 @@
           }
         }
 
-        toggle.addEventListener("click", () => {
-          playing = !playing;
-          toggle.textContent = playing ? "Pause animation" : "Resume animation";
-          clearTimeout(timer);
-          scheduleSwap();
-        });
-
         reducedMotion.addEventListener("change", ({ matches }) => {
           if (!matches) return;
           playing = false;
           clearTimeout(timer);
-          toggle.hidden = true;
           if (!transitioning) setHeadline(true);
         });
 
-        toggle.hidden = false;
         scheduleSwap();
       } catch {
         setHeadline(true);
