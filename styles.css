@@ -55,32 +55,26 @@ a:focus-visible, .motion-toggle:focus-visible { outline: 2px solid var(--lime); 
   text-transform: uppercase;
 }
 
-.wordmark,
+.site-logo,
 .site-nav,
 .text-link,
 .project {
   border-radius: var(--radius);
 }
 
-.wordmark,
 .site-nav {
   min-height: var(--nav-height);
 }
 
-.wordmark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding-inline: clamp(12px, 2vw, 28px);
-  text-decoration: none;
+.site-logo {
+  display: block;
+  justify-self: start;
 }
 
-.wordmark {
-  justify-self: start;
-  background: var(--black);
-  color: var(--lime);
-  font: 400 1.45rem/1 var(--display);
-  text-transform: uppercase;
+.site-logo img {
+  display: block;
+  width: auto;
+  height: clamp(32px, 3vw, 44px);
 }
 
 .site-nav {
@@ -112,8 +106,6 @@ a:focus-visible, .motion-toggle:focus-visible { outline: 2px solid var(--lime); 
   outline-color: var(--black);
   outline-offset: -5px;
 }
-
-.wordmark:hover { text-decoration: underline; }
 
 .section-row {
   padding-block: var(--row-space);
@@ -273,14 +265,21 @@ a.project { text-decoration: none; }
 }
 
 .about-copy {
-  max-width: 35ch;
   font-size: clamp(1.125rem, 2.3vw, 1.75rem);
   line-height: 1.4;
 }
 
+.interior-main .about-copy { max-width: 35ch; }
+
 .about-summary .text-link { margin-top: 16px; }
 
 .site-footer { padding-block: 28px 38px; }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
 @media (max-width: 480px) {
   .site-header { grid-template-columns: minmax(0, 1fr); }
