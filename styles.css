@@ -202,8 +202,8 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
 
 .text-link:hover,
 .hero .text-link:focus-visible,
-.project:focus-visible,
-.project:hover {
+a.project:focus-visible,
+a.project:hover {
   background: var(--lime);
   color: var(--green);
 }
@@ -278,7 +278,7 @@ a.project { text-decoration: none; }
 @media (prefers-reduced-motion: no-preference) {
   .site-nav a,
   .text-link,
-  .project,
+  a.project,
   .text-button {
     transition: background-color 150ms ease-out, color 150ms ease-out;
   }
@@ -307,12 +307,75 @@ a.project { text-decoration: none; }
 }
 
 @media (max-width: 640px) {
-  .hero-headline { font-size: min(14.5vw, 37svh, 230px); }
+  .first-screen { min-height: auto; }
 
+  .hero {
+    gap: 22px;
+    padding-block: clamp(42px, 13vw, 80px) 12px;
+  }
+
+  .hero-headline { font-size: min(13vw, 37svh, 230px); }
+  .hero-line { white-space: normal; }
+  .project h2,
+  .project h3 { font-size: clamp(32px, 8vw, 48px); }
+  .page-title { font-size: clamp(46px, 12vw, 76px); }
 
   .section-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 18px;
   }
 
+}
+
+.hero-role { font-size: .875rem; }
+
+.project--featured {
+  min-height: clamp(220px, 29vw, 380px);
+  background: var(--lime);
+  color: var(--green);
+}
+
+a.project--featured:hover,
+a.project--featured:focus-visible {
+  background: #F0FFC2;
+}
+
+.project[id] { scroll-margin-top: 24px; }
+
+.case-study {
+  align-content: start;
+  gap: clamp(24px, 4vw, 48px);
+  padding: clamp(20px, 5vw, 64px);
+}
+
+.case-study-header {
+  display: grid;
+  gap: 14px;
+}
+
+.case-intro {
+  max-width: 55ch;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+}
+
+.case-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24ch), 1fr));
+  gap: clamp(24px, 4vw, 48px);
+  padding-top: 24px;
+  border-top: var(--rule);
+}
+
+.case-sections h3 {
+  margin-bottom: 10px;
+  font: 400 1.75rem/1 var(--display);
+}
+
+.case-sections p,
+.about-detail { max-width: 65ch; }
+
+.about-detail {
+  display: grid;
+  justify-items: start;
+  gap: 22px;
 }
