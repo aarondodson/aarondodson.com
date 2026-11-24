@@ -3,12 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Aaron Dodson, UX Design Manager at Experian. Selected work in product and web design.">
+  <meta name="description" content="Aaron Dodson leads UX design for Experian’s financial marketplace. Explore selected work in product and web design.">
   <title>Aaron Dodson — Design Leadership</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aaron Dodson">
+  <meta property="og:title" content="Aaron Dodson — Design Leadership">
+  <meta property="og:description" content="Aaron Dodson leads UX design for Experian’s financial marketplace. Explore selected work in product and web design.">
+  <meta property="og:url" content="https://aarondodson.com/">
+  <meta property="og:image" content="https://aarondodson.com/images/aaron-portrait.jpg">
+  <meta property="og:image:width" content="900">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="Black-and-white portrait of Aaron Dodson">
+  <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=League+Gothic&amp;display=swap">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=interaction-polish">
 </head>
 <body id="top">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="page">
     <main>
       <div class="first-screen">
@@ -17,21 +28,20 @@
           <nav class="site-nav" aria-label="Portfolio navigation">
             <a href="work.html">Work</a>
             <a href="about.html">About</a>
-            <a href="#contact">Contact</a>
+            <a href="contact.html">Contact</a>
           </nav>
         </header>
-        <section class="hero" aria-labelledby="hero-headline">
+        <section class="hero" id="main-content" tabindex="-1" aria-labelledby="hero-headline">
           <h1 class="hero-headline" id="hero-headline" aria-label="Good UX is good business.">
-            <span class="hero-line" data-word="good" aria-hidden="true"><span class="hero-line-text"><span class="hero-swap" data-intro="Bad"><span class="hero-swap-word">Good</span></span> <span class="hero-static">UX is</span></span></span>
-            <span class="hero-line" data-word="good" aria-hidden="true"><span class="hero-line-text"><span class="hero-swap" data-intro="bad"><span class="hero-swap-word">good</span></span> <span class="hero-static">busines</span></span><span class="hero-face-anchor"><span class="hero-line-text">s</span><svg class="hero-face" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false">
+            <span class="hero-line" aria-hidden="true"><span class="hero-line-text">Good <span class="hero-static">UX is</span></span></span>
+            <span class="hero-line" aria-hidden="true"><span class="hero-line-text">good <span class="hero-static">busines</span></span><span class="hero-face-anchor"><span class="hero-line-text">s</span><svg class="hero-face" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false">
                 <circle cx="50" cy="50" r="48.5"/>
                 <path d="M42 17v16m16-16v16"/>
-                <path class="hero-face-frown" d="M14 72a41 41 0 0 1 72 0"/>
-                <path class="hero-face-smile" d="M9 50a41 41 0 0 0 82 0"/>
+                <path d="M9 50a41 41 0 0 0 82 0"/>
               </svg></span><span class="hero-line-text">.</span></span>
           </h1>
           <div class="hero-actions">
-            <p class="hero-role">I lead UX design at Experian.</p>
+            <p class="hero-role">I lead UX design for Experian’s financial marketplace.</p>
             <a class="text-link" href="#work">View selected work <span aria-hidden="true">↓</span></a>
           </div>
         </section>
@@ -39,7 +49,7 @@
       <section class="section-row" id="work" aria-labelledby="work-title">
         <h2 class="section-label" id="work-title">Selected work <svg class="label-accent" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M8 1v14M2 4.5l12 7M2 11.5l12-7"/></svg></h2>
         <div class="projects">
-          <a class="project project--illustrated project--featured" href="work.html#experian-insurance-hub">
+          <a class="project project--illustrated" href="work.html#experian-insurance-hub">
             <h3>Experian Product Design Strategy</h3>
             <p class="project-meta">Design leadership · Insurance Marketplace</p>
             <svg class="project-icon" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -93,66 +103,5 @@
       </div>
     </footer>
   </div>
-  <script>
-    (() => {
-      const motion = matchMedia("(prefers-reduced-motion: reduce)");
-      if (motion.matches || !Element.prototype.animate) return;
-
-      const lines = [...document.querySelectorAll(".hero-line")];
-      const words = lines.map(line => line.querySelector(".hero-swap-word"));
-      const finalWords = words.map(word => word.textContent);
-      const animations = [];
-
-      function showFinal() {
-        lines.forEach((line, index) => {
-          line.dataset.word = "good";
-          words[index].textContent = finalWords[index];
-        });
-      }
-
-      words.forEach((word, index) => {
-        word.textContent = word.parentElement.dataset.intro;
-        lines[index].dataset.word = "bad";
-      });
-
-      const timer = setTimeout(play, 1100);
-      motion.addEventListener("change", stop);
-
-      function stop() {
-        clearTimeout(timer);
-        animations.forEach(animation => animation.cancel());
-        showFinal();
-        motion.removeEventListener("change", stop);
-      }
-
-      function slide(elements, frames, options) {
-        return Promise.all(elements.map(element => {
-          const animation = element.animate(frames, { ...options, fill: "both" });
-          animations.push(animation);
-          return animation.finished;
-        }));
-      }
-
-      async function play() {
-        const text = lines.flatMap(line => [...line.querySelectorAll(".hero-line-text")]);
-        const face = document.querySelector(".hero-face");
-        try {
-          await Promise.all([
-            slide(text, { opacity: [1, 0], translate: ["0 0", "0 -.22em"] }, { duration: 180, easing: "ease-in" }),
-            slide([face], { opacity: [1, 0] }, { duration: 180, easing: "ease-in" })
-          ]);
-          showFinal();
-          await Promise.all([
-            slide(text, { opacity: [0, 1], translate: ["0 .22em", "0 0"] }, { duration: 340, easing: "cubic-bezier(.16, 1, .3, 1)" }),
-            slide([face], { opacity: [0, 1] }, { duration: 340, easing: "ease-out" })
-          ]);
-        } catch {
-          // Cancellation also lands on the static headline.
-        } finally {
-          stop();
-        }
-      }
-    })();
-  </script>
 </body>
 </html>
