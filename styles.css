@@ -363,20 +363,6 @@ a.project { text-decoration: none; }
   font-size: clamp(1rem, 2.4vw, 1.4rem);
 }
 
-.case-sections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24ch), 1fr));
-  gap: clamp(24px, 4vw, 48px);
-  padding-top: 24px;
-  border-top: var(--rule);
-}
-
-.case-sections h3 {
-  margin-bottom: 10px;
-  font: 400 1.75rem/1 var(--display);
-}
-
-.case-sections p,
 .about-detail { max-width: 65ch; }
 
 .about-detail {
@@ -616,3 +602,134 @@ a.project { text-decoration: none; }
   }
 }
 
+
+.case-open { justify-self: start; }
+
+.case-page {
+  gap: clamp(32px, 6vw, 88px);
+}
+
+.case-detail-header {
+  display: grid;
+  justify-items: start;
+  gap: clamp(16px, 2.6vw, 36px);
+}
+
+.case-back {
+  font-size: .875rem;
+}
+
+.case-page .page-title {
+  font-size: clamp(3rem, 9vw, 8rem);
+}
+
+.case-detail-summary {
+  max-width: 52ch;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+}
+
+.case-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px clamp(24px, 5vw, 72px);
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid #788e4b;
+}
+
+.case-facts dt {
+  color: #bbcba6;
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+.case-facts dd { margin: .3rem 0 0; }
+
+.case-media { margin: 0; }
+
+.case-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.case-media figcaption {
+  margin-top: .75rem;
+  color: #bbcba6;
+  font-size: .8125rem;
+}
+
+.case-narrative {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: start;
+}
+
+.case-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  font-size: .875rem;
+}
+
+.case-story { display: grid; gap: clamp(32px, 5vw, 64px); }
+
+.case-story section {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.125rem;
+  border-top: 1px solid #788e4b;
+  scroll-margin-top: 1rem;
+}
+
+.case-story h2 {
+  font: 400 clamp(2rem, 5vw, 3.5rem)/1 var(--display);
+  text-transform: uppercase;
+}
+
+.case-story p { max-width: 65ch; }
+
+.case-metric {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: .75rem clamp(20px, 4vw, 56px);
+  margin: .75rem 0 0;
+  padding: clamp(18px, 4vw, 48px);
+  border-radius: var(--radius);
+  background: var(--black);
+}
+
+.case-metric-value {
+  font: 400 clamp(4rem, 12vw, 9rem)/.9 var(--display);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.case-metric-number {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: end;
+}
+
+.case-metric figcaption span {
+  display: block;
+  margin-top: .5rem;
+  color: #bbcba6;
+  font-size: .8125rem;
+}
+
+@media (min-width: 721px) {
+  .case-jumps {
+    position: sticky;
+    top: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .case-narrative { grid-template-columns: minmax(0, 1fr); }
+}
